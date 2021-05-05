@@ -1,6 +1,6 @@
 {
   "name": "@kimtuan1102/nestjs-kafka",
-  "version": "7.2.26",
+  "version": "7.2.28",
   "description": "NestJS Kafka Client",
   "author": "Trinh Kim Tuan",
   "repository": "https://github.com/kimtuan1102/nestjs-kafka.git",

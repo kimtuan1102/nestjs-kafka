@@ -1,13 +1,11 @@
 export const SUBSCRIBER_MAP = new Map();
 export const SUBSCRIBER_OBJECT_MAP = new Map();
+export const SCHEMAS = new Map();
 
-export const SubscribeTo = (topic: string): MethodDecorator => {
-  return (
-    target: any,
-    propertyKey: string | symbol,
-    descriptor: PropertyDescriptor,
-  ) => {
-    SUBSCRIBER_MAP.set(topic, { target, propertyKey });
+export function SubscribeTo(topic: string) {
+  return (target, propertyKey, descriptor) => {
+    const originalMethod = target[propertyKey];
+    SUBSCRIBER_MAP.set(topic, originalMethod);
     return descriptor;
   };
-};
+}
