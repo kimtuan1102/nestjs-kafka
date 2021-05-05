@@ -31,7 +31,7 @@
 ## Installation
 
 ```bash
-$ npm i --save @kimtuan1102/nestjs-kafka @kafkajs/confluent-schema-registry @nestjs/microservices kafkajs rxjs
+$ npm i --save @kimtuan1102/nestjs-kafka
 ```
 
 ### Synchronous Module Initialization

@@ -1,5 +1,5 @@
 {
-  "name": "@kimtuan1102/nestjs-kafka",
+  "name": "@fptai/nestjs-kafka",
   "version": "7.2.35",
   "description": "NestJS Kafka Client",
   "author": "Trinh Kim Tuan",
