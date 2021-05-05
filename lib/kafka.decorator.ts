@@ -1,6 +1,5 @@
 export const SUBSCRIBER_MAP = new Map();
 export const SUBSCRIBER_OBJECT_MAP = new Map();
-export const INSTANCE_MAP = new Map();
 
 export const SubscribeTo = (topic: string): MethodDecorator => {
   return (
