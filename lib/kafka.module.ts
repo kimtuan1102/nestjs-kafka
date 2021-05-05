@@ -43,7 +43,7 @@ export class KafkaModule {
       });
     }
 
-    const createKafkaModuleOptionsProvider = this.createKafkaModuleOptionsProvider(
+    const createKafkaProvider = this.createKafkaProvider(
       connectOptions,
     );
 
@@ -51,12 +51,22 @@ export class KafkaModule {
       module: KafkaModule,
       imports: connectOptions.imports || [],
       providers: [
-        createKafkaModuleOptionsProvider,
+        ...createKafkaProvider,
         KafkaModuleOptionsProvider,
         ...clients,
       ],
-      exports: [createKafkaModuleOptionsProvider, ...clients],
+      exports: [...clients],
     };
+  }
+
+  private static createKafkaProvider(options: KafkaModuleOptionsAsync): Provider[] {
+    if (options.useExisting || options.useFactory) {
+      return [this.createKafkaModuleOptionsProvider(options)];
+    }
+    return [this.createKafkaModuleOptionsProvider(options), {
+      provide: options.useClass,
+      useClass: options.useClass
+    }];
   }
 
   private static createKafkaModuleOptionsProvider(
@@ -72,7 +82,7 @@ export class KafkaModule {
     return {
       provide: KAFKA_MODULE_OPTIONS,
       useFactory: async (optionsFactory: KafkaOptionsFactory) =>
-        await optionsFactory.creatKafkaModuleOptions(),
+        await optionsFactory.createKafkaModuleOptions(),
       inject: [options.useExisting || options.useClass],
     };
   }

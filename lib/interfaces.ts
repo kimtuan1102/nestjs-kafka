@@ -43,5 +43,5 @@ export interface KafkaModuleOptionsAsync
   ) => Promise<KafkaModuleOption[]> | KafkaModuleOption[];
 }
 export interface KafkaOptionsFactory {
-  creatKafkaModuleOptions(): Promise<KafkaModuleOption[]> | KafkaModuleOption[];
+  createKafkaModuleOptions(): Promise<KafkaModuleOption[]> | KafkaModuleOption[];
 }
